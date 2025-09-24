@@ -2,7 +2,10 @@
 
 namespace Mortezaa97\Addresses;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Mortezaa97\Addresses\Models\Address;
+use Mortezaa97\Addresses\Policies\AddressPolicy;
 
 class AddressesServiceProvider extends ServiceProvider
 {
@@ -11,36 +14,23 @@ class AddressesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'addresses');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'addresses');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        // Load migrations
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        // Load routes
+        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+
+        // Register policies
+        Gate::policy(Address::class, AddressPolicy::class);
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('addresses.php'),
+                __DIR__ . '/../config/config.php' => config_path('address.php'),
             ], 'config');
 
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/addresses'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/addresses'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/addresses'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
+            $this->publishes([
+                __DIR__ . '/../database/migrations' => database_path('migrations'),
+            ], 'migrations');
         }
     }
 
