@@ -1,18 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mortezaa97\Addresses\Http;
 
 use App\Http\Controllers\Controller;
-use App\Models\Address;
-use Illuminate\Http\Request;;
-use Illuminate\Support\Facades\Gate;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Resources\AddressResource;
+use Illuminate\Support\Facades\Gate;
+use Mortezaa97\Addresses\Models\Address;
+
 class AddressController extends Controller
 {
     public function index()
     {
         Gate::authorize('viewAny', Address::class);
+
         return AddressResource::collection(Address::all());
     }
 
@@ -22,15 +26,17 @@ class AddressController extends Controller
         try {
             DB::beginTransaction();
             DB::commit();
-        } catch (\Exception $exception) {
-            return response()->json($exception->getMessage(),419);
+        } catch (Exception $exception) {
+            return response()->json($exception->getMessage(), 419);
         }
+
         return new AddressResource($address);
     }
 
     public function show(Address $address)
     {
         Gate::authorize('view', $address);
+
         return new AddressResource($address);
     }
 
@@ -40,9 +46,10 @@ class AddressController extends Controller
         try {
             DB::beginTransaction();
             DB::commit();
-        } catch (\Exception $exception) {
-            return response()->json($exception->getMessage(),419);
+        } catch (Exception $exception) {
+            return response()->json($exception->getMessage(), 419);
         }
+
         return new AddressResource($address);
     }
 
@@ -52,9 +59,10 @@ class AddressController extends Controller
         try {
             DB::beginTransaction();
             DB::commit();
-        } catch (\Exception $exception) {
-            return response()->json($exception->getMessage(),419);
+        } catch (Exception $exception) {
+            return response()->json($exception->getMessage(), 419);
         }
-        return response()->json("با موفقیت حذف شد");
+
+        return response()->json('با موفقیت حذف شد');
     }
 }
