@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mortezaa97\Addresses\Http;
+namespace Mortezaa97\Addresses\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Exception;
