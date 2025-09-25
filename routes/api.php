@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+use Mortezaa97\Addresses\Http\AddressController;
 
 Route::get('addresses', [AddressController::class, 'index'])->middleware('auth:api')->name('addresses.index');
 Route::get('addresses/{address}', [AddressController::class, 'show'])->name('addresses.show');
