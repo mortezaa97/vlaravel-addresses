@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use Mortezaa97\Addresses\Http\Controllers\AddressController;
 
-Route::prefix('api/addresses')->group(function () {
+Route::prefix('api/addresses')->middleware('api')->group(function () {
     Route::get('/', [AddressController::class, 'index'])->middleware('auth:api')->name('addresses.index');
     Route::get('/{address}', [AddressController::class, 'show'])->name('addresses.show');
     Route::post('/', [AddressController::class, 'store'])->middleware('auth:api')->name('addresses.store');
