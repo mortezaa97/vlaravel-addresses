@@ -17,7 +17,10 @@ composer require mortezaa97/addresses
 ## Usage
 
 ```php
-// Usage description here
+php artisan vendor:publish --tag=addresses-seeders
+```
+```php
+AddressesTableSeeder::class,
 ```
 
 ### Testing
