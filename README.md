@@ -6,7 +6,7 @@
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
-## Installation
+## Installation - s - 2
 
 You can install the package via composer:
 
@@ -19,6 +19,7 @@ composer require mortezaa97/addresses
 ```php
 php artisan vendor:publish --tag=addresses-seeders
 ```
+
 ```php
 AddressesTableSeeder::class,
 ```
@@ -43,8 +44,8 @@ If you discover any security related issues, please email mortezajafari76@gmail.
 
 ## Credits
 
--   [morteza jafari](https://github.com/mortezaa97)
--   [All Contributors](../../contributors)
+- [morteza jafari](https://github.com/mortezaa97)
+- [All Contributors](../../contributors)
 
 ## License
 
