@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mortezaa97\Addresses\Policies;
 
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 use Mortezaa97\Addresses\Models\Address;
 
 class AddressPolicy

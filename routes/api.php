@@ -12,4 +12,3 @@ Route::prefix('api/addresses')->middleware('api')->group(function () {
     Route::match(['put', 'patch'], '/{address}', [AddressController::class, 'update'])->middleware('auth:api')->name('addresses.update');
     Route::delete('/{address}', [AddressController::class, 'destroy'])->middleware('auth:api')->name('addresses.destroy');
 });
-

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mortezaa97\Addresses\Filament\Resources\Addresses\Tables;
 
 use Filament\Actions\BulkActionGroup;

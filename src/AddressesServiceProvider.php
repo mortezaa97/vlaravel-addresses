@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mortezaa97\Addresses;
 
 use Illuminate\Support\Facades\Gate;
@@ -44,7 +46,7 @@ class AddressesServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'addresses');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'addresses');
 
         // Register the main class to use with the facade
         $this->app->singleton('addresses', function () {

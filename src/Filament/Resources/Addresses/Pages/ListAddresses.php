@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mortezaa97\Addresses\Filament\Resources\Addresses\Pages;
 
-use Mortezaa97\Addresses\Filament\Resources\Addresses\AddressResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
+use Mortezaa97\Addresses\Filament\Resources\Addresses\AddressResource;
 
 class ListAddresses extends ListRecords
 {
