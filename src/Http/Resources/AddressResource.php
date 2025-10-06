@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mortezaa97\Addresses\Http;
+namespace Mortezaa97\Addresses\Http\Resources;
 
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
