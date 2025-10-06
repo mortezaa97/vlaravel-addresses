@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Mortezaa97\Addresses\Http\Resources\AddressResource;
 use Mortezaa97\Addresses\Models\Address;
 
 class AddressController extends Controller
