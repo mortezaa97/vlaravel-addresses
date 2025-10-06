@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mortezaa97\Addresses\Http;
 
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,6 +17,6 @@ class AddressResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [];
+        return parent::toArray($request);
     }
 }
