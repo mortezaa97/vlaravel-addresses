@@ -32,7 +32,7 @@ class AddressController extends Controller
             $data = $request->only($item->fillable);
             $data['created_by'] = Auth::user()->id;
             if (! $request->status) {
-                $data['status'] = Status::ACTIVE;
+                $data['status'] = Status::ACTIVE->value;
             }
             $address = $item->create($data);
             DB::commit();
