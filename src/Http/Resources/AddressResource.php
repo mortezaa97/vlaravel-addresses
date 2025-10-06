@@ -8,7 +8,7 @@ use App\Enums\Status;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Mortezaa97\Regions\Filament\Resources\Counties\CountyResource;
+use Mortezaa97\Regions\Http\Resources\CountyResource;
 
 class AddressResource extends JsonResource
 {
