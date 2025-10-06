@@ -30,7 +30,7 @@ class AddressResource extends JsonResource
             'latitude'=>$this->latitude,
             'first_name'=>$this->first_name,
             'last_name'=>$this->last_name,
-            'status'=>Status::get($this->status),
+            'status'=>Status::get([$this->status])?->value,
             'created_by'=>$this->whenLoaded('created_by', UserResource::make($this->created_by)),
         ];
     }

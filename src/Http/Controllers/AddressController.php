@@ -20,7 +20,7 @@ class AddressController extends Controller
     {
         Gate::authorize('viewAny', Address::class);
 
-        return AddressResource::collection(Address::all());
+        return AddressResource::collection(Address::with('county.province')->get());
     }
 
     public function store(Request $request)
