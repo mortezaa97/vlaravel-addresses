@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Mortezaa97\Addresses\Http\Controllers;
 
+use App\Enums\Status;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Mortezaa97\Addresses\Http\Resources\AddressResource;
@@ -26,6 +28,13 @@ class AddressController extends Controller
         Gate::authorize('create', Address::class);
         try {
             DB::beginTransaction();
+            $item = new Address;
+            $data = $request->only($item->fillable);
+            $data['created_by'] = Auth::user()->id;
+            if (! $request->status) {
+                $data['status'] = Status::ACTIVE;
+            }
+            $address = $item->create($data);
             DB::commit();
         } catch (Exception $exception) {
             return response()->json($exception->getMessage(), 419);

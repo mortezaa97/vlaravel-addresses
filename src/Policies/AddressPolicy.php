@@ -30,7 +30,7 @@ class AddressPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasAnyRole('admin','user');
+        return $user->hasAnyRole('admin', 'user');
     }
 
     /**
