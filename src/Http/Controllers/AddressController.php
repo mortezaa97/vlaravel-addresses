@@ -39,7 +39,7 @@ class AddressController extends Controller
         } catch (Exception $exception) {
             return response()->json($exception->getMessage(), 419);
         }
-
+        $address->load('county');
         return new AddressResource($address);
     }
 
