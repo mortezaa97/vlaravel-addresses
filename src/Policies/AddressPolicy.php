@@ -12,9 +12,9 @@ class AddressPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(?User $user): bool
+    public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasAnyRole(['admin','user']);
     }
 
     /**
@@ -22,7 +22,7 @@ class AddressPolicy
      */
     public function view(User $user, Address $address): bool
     {
-        return true;
+        return $user->hasAnyRole(['admin','user']);
     }
 
     /**

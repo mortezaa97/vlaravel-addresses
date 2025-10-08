@@ -19,8 +19,9 @@ class AddressController extends Controller
     public function index()
     {
         Gate::authorize('viewAny', Address::class);
+        $addresses = Address::where('created_by', Auth::user()->id)->with('county.province')->get();
 
-        return AddressResource::collection(Address::with('county.province')->get());
+        return AddressResource::collection($addresses);
     }
 
     public function store(Request $request)
@@ -40,6 +41,7 @@ class AddressController extends Controller
             return response()->json($exception->getMessage(), 419);
         }
         $address->load('county');
+
         return new AddressResource($address);
     }
 
