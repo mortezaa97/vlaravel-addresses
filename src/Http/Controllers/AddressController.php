@@ -57,6 +57,10 @@ class AddressController extends Controller
         Gate::authorize('update', $address);
         try {
             DB::beginTransaction();
+            $data = $request->only($address->fillable);
+            $data['updated_by'] = Auth::user()->id;
+            $data['status'] = Status::ACTIVE->value;
+            $address->update($data);
             DB::commit();
         } catch (Exception $exception) {
             return response()->json($exception->getMessage(), 419);
@@ -70,6 +74,7 @@ class AddressController extends Controller
         Gate::authorize('delete', $address);
         try {
             DB::beginTransaction();
+            $address->delete();
             DB::commit();
         } catch (Exception $exception) {
             return response()->json($exception->getMessage(), 419);
